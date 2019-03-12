@@ -88,7 +88,7 @@ def refine_filters(data: list, filters: dict):
     return filters
 
 
-@app.after_request  # blueprint can also be app~~
+@app.after_request
 def after_request(response):
     header = response.headers
     header["Access-Control-Allow-Origin"] = "*"
