@@ -4,7 +4,7 @@ from data import vehicles
 app = Flask(__name__)
 
 
-@app.route("/vehicles", methods=["GET"])
+@app.route("/", methods=["GET"])
 def api():
     """
     Endpoint that returns a list of all vehicles and possible filters.
