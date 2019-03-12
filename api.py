@@ -52,9 +52,9 @@ def api():
 
 
 def get_filter(data: list, f: str):
-    '''
+    """
     Gets possible filters for a specific dimension
-    '''
+    """
     if f == "brand" or f == "type":
         return list(set([vehicle[f] for vehicle in data]))
     if f == "color":
@@ -86,6 +86,13 @@ def refine_filters(data: list, filters: dict):
         filters[f].sort()
 
     return filters
+
+
+@app.after_request  # blueprint can also be app~~
+def after_request(response):
+    header = response.headers
+    header["Access-Control-Allow-Origin"] = "*"
+    return response
 
 
 if __name__ == "__main__":
