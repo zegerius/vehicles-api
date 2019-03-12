@@ -64,6 +64,7 @@ def get_filter(data: list, f: str):
 def apply_filter(fs: list, data: list):
     """
     Recursively apply filters to data
+    TODO: in case of search queries, make filter case insensitive
     """
     if not fs:  # If no filters applied or recursion finished
         return data
@@ -90,6 +91,9 @@ def refine_filters(data: list, filters: dict):
 
 @app.after_request
 def after_request(response):
+    """
+    Remove any CORS restrictions
+    """
     header = response.headers
     header["Access-Control-Allow-Origin"] = "*"
     return response
